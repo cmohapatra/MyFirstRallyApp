@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>myFirstRallyApp</title>
+
+    <script type="text/javascript" src="https://rally1.rallydev.com/apps/2.0/sdk.js"></script>
+
+    <script type="text/javascript">
+        Rally.onReady(function () {
+                Ext.define("CustomApp",{extend:"Rally.app.App",componentCls:"app",launch:function(){this._loadStore(),console.log("My first rally app!")},_loadStore:function(){var myStore=Ext.create("Rally.data.wsapi.Store",{model:"TestCase",autoLoad:!0,listeners:{load:function(myStore,myData,success){console.log(myStore,myData,success),this._loadGrid(myStore)},scope:this},fetch:["CreationDate","ObjectID","VersionId","Subscription","Workspace","Changesets","Description","Discussion","DisplayColor","Expedite","FormattedID","LastUpdateDate","LatestDiscussionAgeInMinutes","Milestones","Name","Notes","Owner","Project","Ready","RevisionHistory","Tags","Attachments","DefectStatus","DragAndDropRank","LastBuild","LastRun","LastVerdict","Method","Objective","Package","PostConditions","PreConditions","Priority","Recycled","Results","Risk","Steps","Type","ValidationExpectedResult","ValidationInput","WorkProduct"]})},_loadGrid:function(myStore){Ext.create("Ext.Container",{items:[{xtype:"rallygrid",columnCfgs:["CreationDate","ObjectID","VersionId","Subscription","Workspace","Changesets","Description","Discussion","DisplayColor","Expedite","FormattedID","LastUpdateDate","LatestDiscussionAgeInMinutes","Milestones","Name","Notes","Owner","Project","Ready","RevisionHistory","Tags","Attachments","DefectStatus","DragAndDropRank","LastBuild","LastRun","LastVerdict","Method","Objective","Package","PostConditions","PreConditions","Priority","Recycled","Results","Risk","Steps","Type","ValidationExpectedResult","ValidationInput","WorkProduct"],storeConfig:{model:"TestCase"}}],renderTo:Ext.getBody()})}});
+
+            Rally.launchApp('CustomApp', {
+                name:"myFirstRallyApp",
+	            parentRepos:""
+            });
+
+        });
+    </script>
+
+
+    <style type="text/css">
+        
+    </style>
+</head>
+<body>
+</body>
+</html>
